@@ -1,16 +1,12 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-public class Main {
-    static int time = 0;
-
-    public static void main(String[] args) {
-        int n = 4;
-        List<List<Integer>> connections = new ArrayList<>();
-        connections.add(Arrays.asList(0, 1));
-        connections.add(Arrays.asList(1, 2));
-        connections.add(Arrays.asList(2, 0));
-        connections.add(Arrays.asList(1, 3));
-        System.out.println(criticalConnections(n, connections));
-    }
+public static List<List<Integer>> criticalConnections(int n, List<List<Integer>> connections) {
+        int[] disc = new int[n], low = new int[n];
+        List<Integer>[] graph = new ArrayList[n];
+        List<List<Integer>> res = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            graph[i] = new ArrayList<>();
+        }
+        for (int i = 0; i < connections.size(); i++) {
+            int from = connections.get(i).get(0), to = connections.get(i).get(1);
+            graph[from].add(to);
+            graph[to].add(from);
+        }
