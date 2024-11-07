@@ -1,11 +1,18 @@
-using System;
-using System.Collections.Generic;
+public static void Main()
+    {
+        int n = 4;
+        List<List<int>> connections = new List<List<int>>
+        {
+            new List<int> {0, 1},
+            new List<int> {1, 2},
+            new List<int> {2, 0},
+            new List<int> {1, 3}
+        };
 
-public class Program
-{
-    private static int time = 0;
-    private static List<List<int>> criticalConnections;
-    private static int[] low;
-    private static int[] ids;
-    private static bool[] visited;
-    private static List<int>[] graph;
+        criticalConnections = CriticalConnections(n, connections);
+
+        foreach (var connection in criticalConnections)
+        {
+            Console.WriteLine(string.Join(" ", connection));
+        }
+    }
